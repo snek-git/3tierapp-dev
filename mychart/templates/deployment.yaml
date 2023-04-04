@@ -11,15 +11,19 @@ asljnf
 asljndfjlasnf
 ljansfknajskln
 kind: Deployment
-metadata:
+metadata
+:
   name: {{ include "mychart.fullname" . }}-gke-test
   labels:
     app: nginx
   {{- include "mychart.labels" . | nindent 4 }}
-spec:
-  replicas: {{ .Values.gkeTest.replicas }}
+sp
+ec:
+  replic
+  as: {{ .Values.gkeTest.replicas }}
   selector:
-    matchLabels:
+    mat
+    chLabels:
       app: nginx
     {{- include "mychart.selectorLabels" . | nindent 6 }}
   template:
