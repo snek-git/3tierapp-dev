@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  issues: write
+  contents: read
+  
 
 env:
   PROJECT_ID: felo-task-service-project
