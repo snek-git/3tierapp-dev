@@ -86,7 +86,7 @@ jobs:
 
     - name: commit
       run: |
-          git add date.log
+          git add -f date.log
           git commit -m "new commit message"
           git push origin helm-charts
         
