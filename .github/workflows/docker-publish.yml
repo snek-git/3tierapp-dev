@@ -76,11 +76,19 @@ jobs:
       run: |-
         helm package mychart
 
-    - name: git push
-      run: |-
-        git add .
-        git commit -m "helm package"
-        git push origin helm-charts
+    - name: save current date
+      run: date > date.log
+
+    - name: setup git config
+      run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+    - name: commit
+      run: |
+          git add date.log
+          git commit -m "new commit message"
+          git push origin helm-charts
         
 
 
