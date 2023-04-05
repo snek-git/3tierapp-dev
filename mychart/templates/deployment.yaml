@@ -1,1 +1,28 @@
-\
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mychart.fullname" . }}-gke-test
+  labels:
+    app: nginx
+  {{- include "mychart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.gkeTest.replicas }}
+  selector:
+    matchLabels:
+      app: nginx
+    {{- include "mychart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: nginx
+      {{- include "mychart.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.gkeTest.nginxContainerTest.image.repository }}: {{ .Values.gkeTest.nginxContainerTest.image.tag }}
+        name: nginx-container-test
+        ports:
+        - containerPort: 80
+        resources: {}
