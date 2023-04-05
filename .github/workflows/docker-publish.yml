@@ -59,7 +59,6 @@ jobs:
     environment: production
     steps:
 
-
     - name: Checkout
       uses: actions/checkout@v3
 
@@ -68,9 +67,21 @@ jobs:
       with:
         version: v3.3.4
     
-    - name: helm package
-      run: |
-        helm package ./helm/gke-test-nginx
+    - name: set up git branch
+      run: |-
+        git checkout "helm-charts"
+        get rebase main
+
+    - name: helm package artifact 
+      run: |-
+        helm package mychart
+
+    - name: git push
+      run: |-
+        git add .
+        git commit -m "helm package"
+        git push origin helm-charts
+        
 
 
   deploy:
