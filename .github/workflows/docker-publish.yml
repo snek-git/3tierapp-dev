@@ -8,7 +8,7 @@ on:
 permissions:
   issues: write
   contents: read
-  
+
 
 env:
   PROJECT_ID: felo-task-service-project
@@ -51,6 +51,26 @@ jobs:
     - name: Publish
       run: |-
         docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
+
+  helm:
+    needs: setup-build-publish
+    name: Helm
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Helm
+      uses: azure/setup-helm@v1
+      with:
+        version: v3.3.4
+    
+    - name: helm package
+      run: |
+        helm package ./helm/gke-test-nginx
 
 
   deploy:
