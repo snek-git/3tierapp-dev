@@ -70,7 +70,7 @@ jobs:
     - name: set up git branch
       run: |-
         git checkout -b helm-charts
-        get rebase main
+        git rebase main
 
     - name: helm package artifact 
       run: |-
