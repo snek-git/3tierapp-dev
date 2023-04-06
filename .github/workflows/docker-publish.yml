@@ -19,7 +19,7 @@ env:
 
 jobs:
   setup-build-publish:
-    name: Setup, Build, Publish, and Deploy
+    name: Setup, Build and Publish
     runs-on: ubuntu-latest
     environment: production
 
@@ -66,6 +66,10 @@ jobs:
       uses: azure/setup-helm@v1
       with:
         version: v3.3.4
+
+    - name: replace image tag
+      run: |-
+        sed -i 's/replace/$GITHUB_SHA/g' mychart/values.yaml
     
     - name: set up git branch
       run: |-
@@ -76,10 +80,25 @@ jobs:
       run: |-
         helm package mychart
 
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v9.1.1
+  #Added SSH Key for Git Push.
+    - name: Add SSH key
+      uses: webfactory/ssh-agent@v0.5.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_KEY }}
+    
+    - name: Set up Git
+      run: |
+        git config --global user.email "felo.markosyan@gmail.com"
+        git config --global user.name "snek-git"
+        git remote set-url origin git@github.com:snek-git/3tierapp-dev.git
       
-        
+    #Commit Changes
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "Modified helm chart"
+
+    
 
 
   deploy:

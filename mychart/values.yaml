@@ -1,7 +1,7 @@
 gkeTest:
   nginxContainerTest:
     image:
-      repository: gcr.io/felo-task-service-project/gke-test-nginx-0.1
-      tag: latest
-  replicas: 3
+      repository: gcr.io/davdav/felo-nginx
+      tag: replace
+  replicas: 1
 kubernetesClusterDomain: cluster.local
