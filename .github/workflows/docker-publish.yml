@@ -67,14 +67,14 @@ jobs:
       with:
         version: v3.3.4
 
-    - name: replace image tag
-      run: |-
-        sed -i 's/replace/$GITHUB_SHA/g' mychart/values.yaml
-    
     - name: set up git branch
       run: |-
         git checkout -b helm-charts
         git rebase main
+
+    - name: replace image tag
+      run: |-
+        sed -i 's/replace/$GITHUB_SHA/g' mychart/values.yaml
 
     - name: helm package artifact 
       run: |-
