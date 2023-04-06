@@ -7,4 +7,4 @@ spec:
   selector:
     app: nginx
   ports:
-    - port: 5678 # Default port for image
+    - port: 80 # Default port for image
