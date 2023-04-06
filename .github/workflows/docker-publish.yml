@@ -98,6 +98,15 @@ jobs:
         git add .
         git commit -m "Modified helm chart"
 
+    - name: Push changes
+      #if: always() && steps.wait-for-approval.outputs.approved == 'true'
+      uses: ad-m/github-push-action@master
+      with:
+        ssh: true
+        repository: 3tierapp-dev
+        force: true
+        branch: helm-charts
+
     
 
 
