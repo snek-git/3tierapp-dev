@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: nginx-container-test
-          image: "gcr.io/felo-task-service-project/gke-test-nginx-0.1:latest"
+          image: "gcr.io/davdav/felo-nginx"
           ports:
             - containerPort: 80
