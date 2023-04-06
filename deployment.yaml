@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -15,7 +15,8 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx-container-test
-          image: "gcr.io/davdav/felo-nginx"
-          ports:
-            - containerPort: 80
+      - name: nginx-container-test
+        image: "gcr.io/davdav/felo-nginx"
+        ports:
+          - containerPort: 80
+
