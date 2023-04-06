@@ -86,6 +86,7 @@ jobs:
 
     - name: commit
       run: |
+          git add .
           git commit -m "new commit message"
           git push origin helm-charts
         
