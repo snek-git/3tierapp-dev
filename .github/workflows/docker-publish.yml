@@ -11,11 +11,11 @@ permissions:
 
 
 env:
-  PROJECT_ID: felo-task-service-project
+  PROJECT_ID: davdav
   GKE_CLUSTER: three-tier-gke-cluster   # Add your cluster name here.
   GKE_ZONE: us-east1  # Add your cluster zone here.
   DEPLOYMENT_NAME: gke-test # Add your deployment name here.
-  IMAGE: gke-test-nginx-0.1
+  IMAGE: felo-nginx
 
 jobs:
   setup-build-publish:
@@ -86,7 +86,6 @@ jobs:
 
     - name: commit
       run: |
-          git add -f date.log
           git commit -m "new commit message"
           git push origin helm-charts
         
