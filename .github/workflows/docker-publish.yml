@@ -103,7 +103,7 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         ssh: true
-        repository: 3tierapp-dev
+        repository: snek-git/3tierapp-dev
         force: true
         branch: helm-charts
 
