@@ -76,19 +76,9 @@ jobs:
       run: |-
         helm package mychart
 
-    - name: save current date
-      run: date > date.log
-
-    - name: setup git config
-      run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-
-    - name: commit
-      run: |
-          git add .
-          git commit -m "new commit message"
-          git push origin helm-charts
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v9.1.1
+      
         
 
 
