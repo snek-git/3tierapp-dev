@@ -27,7 +27,7 @@ kind: Deployment
 metadata:
   name: gke-test-backend
   labels:
-    app: nginx
+    app: nginx-backend
 spec:
   replicas: 1
   selector:

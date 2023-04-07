@@ -8,3 +8,17 @@ spec:
     app: nginx
   ports:
     - port: 80 # Default port for image
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: felo-service-backend
+spec:
+  selector:
+    app: nginx-backend
+  ports:
+    - port: 80 # Default port for image
+

@@ -1,15 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: minimal-ingress
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx-example
   rules:
-    - http:
-        paths:
-          - path: /felo
-            pathType: "Prefix"
-            backend:
-              serviceName: felo-service
-              servicePort: 5678
+  - http:
+      paths:
+      - path: /felo
+        pathType: Prefix
+        backend:
+          service:
+            name: felo-service
+            port:
+              number: 80
+      - path: /felo-backend
+        pathType: Prefix
+        backend:
+          service:
+            name: felo-service-backend
+            port:
+              number: 80
