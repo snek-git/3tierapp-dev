@@ -25,7 +25,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gke-test
+  name: gke-test-backend
   labels:
     app: nginx
 spec:
