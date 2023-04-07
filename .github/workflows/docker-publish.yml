@@ -55,7 +55,7 @@ jobs:
 
 
   setup-build-publish-backend:
-    name: Setup, Build and Publish the frontend image
+    name: Setup, Build and Publish the backend image
     runs-on: ubuntu-latest
     environment: production
 
