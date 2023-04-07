@@ -2,6 +2,6 @@ gkeTest:
   nginxContainerTest:
     image:
       repository: gcr.io/davdav/felo-nginx
-      tag: replace
+      tag: $GITHUB_SHA
   replicas: 1
 kubernetesClusterDomain: cluster.local
