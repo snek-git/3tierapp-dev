@@ -20,3 +20,27 @@ spec:
         ports:
           - containerPort: 80
 
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gke-test
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container-test
+        image: "gcr.io/davdav/felo-nginx-backend"
+        ports:
+          - containerPort: 80
+
