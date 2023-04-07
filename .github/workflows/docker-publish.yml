@@ -148,7 +148,7 @@ jobs:
 
 
   deploy:
-    needs: setup-build-publish-front
+    needs: [setup-build-publish-front, setup-build-publish-backend]
     name: Deploy
     runs-on: ubuntu-latest
     environment: production    # Set up kustomize
